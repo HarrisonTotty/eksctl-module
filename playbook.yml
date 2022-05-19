@@ -1,0 +1,26 @@
+---
+# Example "Manual" Playbook
+
+# - hosts: 'localhost'
+#   tasks:
+#     - name: create_file
+#       ansible.builtin.template:
+#         src: eksctl.j2
+#         dest: /tmp/eksctl.yaml
+#     - name: run eksctl with config
+#       ansible.builtin.shell:
+#           shell: eksctl create cluster -f /tmp/eksctl.yaml
+
+# My Module
+# ---------
+
+- hosts: 'localhost'
+  tasks:
+    - name: create a new eks cluster
+      harrisontotty.eksctl.eksctl:
+        name: 'eks-example'
+        version: '1.22'
+        # nodegroups:
+        #   - name: default
+        #     max: 20
+        #     min: 10
